@@ -6,3 +6,129 @@ body {
 a {
   color: #00B7FF;
 }
+.demo{
+  padding: 20px;
+  border-left: 30px solid rgba(0,0,0,0.25);
+  border-color: blue;
+}
+
+.test1{
+  overflow: auto;
+  //overflow: hidden;
+  //overflow: visible;
+  border: thin solid blue;
+}
+
+[species="bird"]{
+  font-size: 1in;
+}
+[species="fish"]{
+  font-size: 1cm;
+}
+[color ="black"]{
+  color:black;
+}
+[color ="blue"]{
+  color:blue;
+}
+[color ="red"]{
+  color:red;
+}
+[color ="brown"]{
+  color:brown;
+}
+[color ="grey"]{
+  color:grey;
+}
+[air]{
+  font-family: cursive;
+}
+[water]{
+  font-family: monospace;
+}
+
+.first {
+  background-color: green;
+  width: 400px;
+  height: 200px;
+  top: 0;
+  left: 100px;
+}
+.second {
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+  top: -150px;
+  left: 125px;
+  opacity: 0.75;
+}
+.third {
+  background-color: pink;
+  width: 200px;
+  height: 300px;
+  top: -375px;
+  left: 250px;
+  opacity: 0.5;
+}
+
+.first, .second, .third {
+  position: relative;
+}
+
+.bc {
+  background-color: lightgrey;
+}
+
+#air{
+  font-size: :50pt;
+}
+#red{
+  background-color: red;
+}
+#red2{
+  color: red;
+}
+#red3{
+  border: thin solid red;
+}
+.red{
+  color:red;
+}
+.blue{
+  color:blue;
+}
+.big{
+  font-size: 30pt;
+}
+.huge{
+  font-size: 120pt;
+}
+.bold{
+  font-weight: bold;
+}
+.center{
+  text-align: center;
+}
+.mono{
+  font-family: monospace;
+}
+.fancy{
+  font-family: fantasy;
+}
+
+a:link {
+    color: blue;
+    font-size: 20pt;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: blue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: orange;
+    background-color: transparent;
+    text-decoration: underline;
+}
