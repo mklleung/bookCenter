@@ -47,31 +47,50 @@ a {
   font-family: monospace;
 }
 
+.leftBorder{
+  left: 100px;
+}
+
 .first {
-  background-color: green;
-  width: 400px;
+  background-color: blue;
+  width: 200px;
   height: 200px;
   top: 0;
   left: 100px;
+  opacity: 0.75;
 }
 .second {
   background-color: blue;
   width: 200px;
   height: 200px;
-  top: -150px;
-  left: 125px;
+  top: 0;
+  left: 200px;
   opacity: 0.75;
 }
 .third {
   background-color: pink;
-  width: 200px;
-  height: 300px;
-  top: -375px;
-  left: 250px;
+  width: 2000px;
+  height: 800px;
+  top: -400;
+  left: 400px;
   opacity: 0.5;
 }
+.imgCenter{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+.small{
+  width: 50px;
+  height: 50px;
+}
+.medium{
+  width: 300px;
+  height: 300px;
+}
 
-.first, .second, .third {
+.first, .second, .third, .leftBorder, .imgCenter {
   position: relative;
 }
 
@@ -131,4 +150,27 @@ a:hover {
     color: orange;
     background-color: transparent;
     text-decoration: underline;
+}
+
+.section {
+  width: 93%;
+  height: 625px;
+  margin: 20px auto;
+  background: blue;
+  display: flex;
+  resize: both;
+  overflow: auto;
+}
+.box {
+  //color: white;
+  background: lightgrey;
+  flex: 1;
+  margin-right: 10px;
+  text-shadow: 1px 1px 1px black;
+  resize: both;
+  overflow: auto;
+}
+.section, .box {
+  border: 5px solid rgba(0,0,0,0.85);
+  padding: 10px;
 }
