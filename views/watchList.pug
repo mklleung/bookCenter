@@ -3,6 +3,33 @@ extends layoutBS
 block content
   body.bc
   br
-  h1.big.fancy.red.leftBorder Watch List
-  br
-  p.leftBorder Books you seek to buy in the future
+  h1.big.mono.red.leftBorder.underline Watch List
+  h2.leftBorder Books you seek to buy in the future
+  .table-responsive.leftBorder
+    table.table
+      thead
+        tr
+          th.underline # Quantity
+          th.underline Book Name
+          th.underline Courses
+          th.underline Cover Type
+          th.underline Condition
+          th.underline Lowest Price (USD)
+          th.underline Seller (Initials)
+      tbody
+        tr
+          td 6
+          td Genki 1
+          td JAPN 10A
+          td Paperback
+          td Fair
+          td $25
+          td J.W.
+        tr
+          td 5
+          td Genki 1 Workbook
+          td JAPN 10A
+          td Paperback
+          td New
+          td $20
+          td S.L.

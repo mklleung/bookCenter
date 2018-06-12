@@ -3,11 +3,11 @@ extends layoutBS
 block content
   body.bc
   br
-  h1.big.fancy.red.leftBorder Your Pages
+  h1.big.mono.red.leftBorder.underline Your Page
   br
   img.leftBorder(src ='/images/michael.jpg')
   p.leftBorder Your picture goes here
-  textarea.test1.leftBorder(rows="5" cols="20" placeholder="Your bio goes here!")
+  textarea.test1.leftBorder(rows="5" cols="25" placeholder="Your bio goes here!")
   br
   img.small.leftBorder(src ='/images/star.png')
   img.small.leftBorder(src ='/images/star.png')
@@ -15,7 +15,8 @@ block content
   img.small.leftBorder(src ='/images/star.png')
   img.small.leftBorder(src ='/images/eStar.png')
   br
-  p.leftBorder Your Rating
   br
+  p.leftBorder.underline Your Rating:
   button.btn-primary.btn-lg.first Reviews of You
   button.btn-primary.btn-lg.second Your Reviews
+  button.btn-primary.btn-lg.third Your Items on Sale

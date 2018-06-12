@@ -6,6 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+.underline{
+  text-decoration: underline;
+}
 .demo{
   padding: 20px;
   border-left: 30px solid rgba(0,0,0,0.25);
@@ -13,6 +16,7 @@ a {
 }
 
 .test1{
+  font-size: 120;
   overflow: auto;
   //overflow: hidden;
   //overflow: visible;
@@ -68,12 +72,12 @@ a {
   opacity: 0.75;
 }
 .third {
-  background-color: pink;
-  width: 2000px;
-  height: 800px;
-  top: -400;
-  left: 400px;
-  opacity: 0.5;
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+  top: -15px;
+  left: 300px;
+  opacity: 0.75;
 }
 .imgCenter{
   display: block;
@@ -95,7 +99,8 @@ a {
 }
 
 .bc {
-  background-color: lightgrey;
+  //background-color: lightgrey;
+  background: linear-gradient(white, lightgrey);
 }
 
 #air{
@@ -119,8 +124,11 @@ a {
 .big{
   font-size: 30pt;
 }
+.mediumFont{
+  font-size: 20px;
+}
 .huge{
-  font-size: 120pt;
+  font-size: 100pt;
 }
 .bold{
   font-weight: bold;
@@ -173,4 +181,45 @@ a:hover {
 .section, .box {
   border: 5px solid rgba(0,0,0,0.85);
   padding: 10px;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+}
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid red;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px;
+  outline: none;
+  color: red;
+}
+.searchTerm:focus{
+  color: red;
+}
+.searchButton {
+  position: absolute;
+  right: -95px;
+  width: 80px;
+  height: 50px;
+  border: 1px solid red;
+  background: red;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  resize: both;
+  overflow: auto;
+}
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
