@@ -37,6 +37,7 @@ var wRouter = require('./routes/w');
 var xRouter = require('./routes/x');
 var yRouter = require('./routes/y');
 var zRouter = require('./routes/z');
+var addBooksRouter = require('./routes/addBooks');
 
 
 var app = express();
@@ -84,6 +85,7 @@ app.use('/departments/W', wRouter);
 app.use('/departments/X', xRouter);
 app.use('/departments/Y', yRouter);
 app.use('/departments/Z', zRouter);
+app.use('/addBooks', addBooksRouter);
 
 
 // catch 404 and forward to error handler
