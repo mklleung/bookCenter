@@ -97,8 +97,8 @@ console.log("inside router ...")
 // Here is where we read the data from a file
 let rawdata = fs.readFileSync('../database/data.json','utf8');
 let database = JSON.parse(rawdata);
-console.log("just read database!")
-console.log(`Here are the squares ${database.squares.map((x)=>(x.toString()))}`)
+//console.log("just read database!")
+//console.log(`Here are the squares ${database.squares.map((x)=>(x.toString()))}`)
 
 //This variable only lasts as long as the router is not restarted
 let counter = 0
@@ -113,7 +113,7 @@ router.get('/', function(req, res, next) {
 router.get('/addBooks', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   counter++
-  console.dir(database)
+  //console.dir(database)
   console.dir(database.skills)
   res.render('addBooks',
       {info:'skill info',
@@ -126,11 +126,11 @@ router.get('/addBooks', function(req, res, next) {
 
 router.post('/addBooks', function(req, res, next){
   counter++
-  console.log(req.body.skill)
-  console.log(req.body.student)
-  console.log(req.body.evidence)
+  //console.log(req.body.skill)
+  //console.log(req.body.student)
+  //console.log(req.body.evidence)
   let e = new Evidence(req.body.student, req.body.skill, req.body.evidence)
-  console.log('Just loaded ',e)
+  //console.log('Just loaded ',e)
   database.evidence.push(e)
   // here is where we write the modified data back to the disk
   fs.writeFileSync('../database/data.json',JSON.stringify(database,null,' '));
