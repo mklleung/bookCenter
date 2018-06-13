@@ -88,10 +88,14 @@ module.exports = router;*/
 var express = require('express');
 var router = express.Router();
 const fs = require('fs');
-const Person = require('../models/Person')
-const Skill = require('../models/Skill')
-const Evidence = require('../models/Evidence')
-const SquareInfo = require('../models/SquareInfo')
+const Quantity = require('../models/Quantity')
+const BookName = require('../models/BookName')
+const Courses = require('../models/Courses')
+const CoverType = require('../models/CoverType')
+const Condition = require('../models/Condition')
+const LowestPrice = require('../models/LowestPrice')
+const Seller = require('../models/Seller')
+const AddBooks = require('../models/AddBooks')
 
 console.log("inside router ...")
 // Here is where we read the data from a file
@@ -102,24 +106,27 @@ let database = JSON.parse(rawdata);
 
 //This variable only lasts as long as the router is not restarted
 let counter = 0
-console.log("loading skills router!!!")
-
-//let squares = []
+//console.log("loading login router!!!")
 
 router.get('/', function(req, res, next) {
   res.render('allBooks', { title: 'All Books' });
-})
+});
 
 router.get('/addBooks', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   counter++
   //console.dir(database)
-  console.dir(database.skills)
+  //console.dir(database.skills)
   res.render('addBooks',
-      {info:'skill info',
-      skills:database.skills,
-      people:database.people,
-      evidence:database.evidence,
+      {info:'Add Books',
+      quantity:database.quantity,
+      bookName:database.bookName,
+      courses:database.courses,
+      coverType:database.coverType,
+      condition:database.condition,
+      lowestPrice:database.lowestPrice,
+      seller:database.seller,
+      addBooks:database.addBooks,
       counter:counter,
     })
 });
@@ -129,17 +136,22 @@ router.post('/addBooks', function(req, res, next){
   //console.log(req.body.skill)
   //console.log(req.body.student)
   //console.log(req.body.evidence)
-  let e = new Evidence(req.body.student, req.body.skill, req.body.evidence)
-  //console.log('Just loaded ',e)
-  database.evidence.push(e)
+  let e = new AddBooks(req.body.quantity, req.body.bookName, req.body.courses, req.body.coverType, req.body.condition, req.body.lowestPrice, req.body.seller)
+  console.log('Just loaded ',e)
+  database.addBooks.push(e)
   // here is where we write the modified data back to the disk
   fs.writeFileSync('../database/data.json',JSON.stringify(database,null,' '));
   // and we send them back to the same page ...
   res.render('addBooks',
-      {info:'skill info',
-      skills:database.skills,
-      people:database.people,
-      evidence:database.evidence,
+      {info:'Add Books',
+      quantity:database.quantity,
+      bookName:database.bookName,
+      courses:database.courses,
+      coverType:database.coverType,
+      condition:database.condition,
+      lowestPrice:database.lowestPrice,
+      seller:database.seller,
+      addBooks:database.addBooks,
       counter:counter
     })
 })

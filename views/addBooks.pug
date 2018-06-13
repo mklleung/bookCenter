@@ -1,45 +1,53 @@
 extends layoutBS
 
 block content
-  h1 Skill List
-  h2 There are currently #{skills.length} skills
+  h1.underline Add a book to sell!
+  h2 There are currently #{addBooks.length} books on sale!
   p This page has been visited #{counter} times since last reset
-  ol
-    each val in skills
-      li #{val.name} --
-        i #{val.description}
-  h2 Here are the people in the system
-  ol
-    each person in people
-      li #{person.name}
-  h2 Here is the evidence
+  br
+  br
+  h2 Here are the books currently on sale
   table.table.table-bordered.table-striped
     tbody
-      each item in evidence
-        - let url = item.url
+      each item in addBooks
+        //- let url = item.url
         tr
           td
-            |#{item.person}
+            |#{item.quantity}
           td
-            |#{item.skill}
+            |#{item.bookName}
           td
-            a(href=url) #{item.url}
-  hr
-  h1 Add your own evidence
+            |#{item.courses}
+          td
+            |#{item.coverType}
+          td
+            |#{item.condition}
+          td
+            |#{item.lowestPrice}
+          td
+            |#{item.seller}
+  br
+  br
   form(method="post" action="/allBooks/addBooks")
-    p This is a form!
     br
-    | Skill --
-    select(name="skill")
-      each val in skills
-        option #{val.name}
+    input(type="text" name="quantity" placeholder="Quantity")
     br
-    | Student --
-    select(name="student")
-      each val in people
-        option #{val.name}
+    input(type="text" name="bookName" placeholder="Book Name")
     br
-    input(type="text" name="evidence" placeholder="URL of evidence")
+    input(type="text" name="courses" placeholder="Courses")
     br
-    button
-      |Submit
+    | Cover Type --
+    select(name="coverType")
+      each val in coverType
+        option #{val.type}
+    br
+    | Condition --
+    select(name="condition")
+      each val in condition
+        option #{val.degree}
+    br
+    input(type="text" name="lowestPrice" placeholder="Lowest Price")
+    br
+    input(type="text" name="seller" placeholder="Seller")
+    br
+    button(type='submit') Submit

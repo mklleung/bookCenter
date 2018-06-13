@@ -1,12 +1,3 @@
-/*var express = require('express');
-var router = express.Router();
-
- //GET home page.
-router.get('/', function(req, res, next) {
-  res.render('logIn', { title: 'Log In' });
-});
-
-module.exports = router;*/
 var express = require('express');
 var router = express.Router();
 const fs = require('fs');
@@ -14,7 +5,6 @@ const Usernam = require('../models/Username')
 const Password = require('../models/Password')
 const Evidence = require('../models/Evidence')
 const LogIn = require('../models/LogIn')
-const SquareInfo = require('../models/SquareInfo')
 
 console.log("inside router ...")
 // Here is where we read the data from a file
@@ -25,19 +15,15 @@ let database = JSON.parse(rawdata);
 
 //This variable only lasts as long as the router is not restarted
 let counter = 0
-console.log("loading login router!!!")
-
-//let squares = []
+//console.log("loading login router!!!")
 
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   counter++
   //console.dir(database)
-  console.dir(database.skills)
+  //console.dir(database.skills)
   res.render('logIn',
       {info:'Log In',
-      //skills:database.skills,
-      //people:database.people,
       username:database.username,
       password:database.password,
       login:database.login,
