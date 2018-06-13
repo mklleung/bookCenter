@@ -54,6 +54,9 @@ a {
 .leftBorder{
   left: 100px;
 }
+.left{
+  left: 10px;
+}
 
 .first {
   background-color: blue;
@@ -99,8 +102,8 @@ a {
 }
 
 .bc {
-  //background-color: lightgrey;
-  background: linear-gradient(white, lightgrey);
+  //background-color: #FFFFFF;
+  background: linear-gradient(white, #18395C);
 }
 
 #air{
@@ -118,8 +121,14 @@ a {
 .red{
   color:red;
 }
+.white{
+  color:white;
+}
 .blue{
   color:blue;
+}
+.deisBlue{
+  color:#18395C;
 }
 .big{
   font-size: 30pt;
@@ -144,13 +153,13 @@ a {
 }
 
 a:link {
-    color: blue;
+    color: black;
     font-size: 20pt;
     background-color: transparent;
     text-decoration: none;
 }
 a:visited {
-    color: blue;
+    color: black;
     background-color: transparent;
     text-decoration: none;
 }
@@ -164,23 +173,23 @@ a:hover {
   width: 93%;
   height: 625px;
   margin: 20px auto;
-  background: blue;
+  background: transparent;
   display: flex;
-  resize: both;
-  overflow: auto;
+  //resize: both;
+  //overflow: auto;
 }
 .box {
   //color: white;
-  background: lightgrey;
+  background: transparent;
   flex: 1;
   margin-right: 10px;
   text-shadow: 1px 1px 1px black;
-  resize: both;
-  overflow: auto;
+  //resize: both;
+  //overflow: auto;
 }
 .section, .box {
-  border: 5px solid rgba(0,0,0,0.85);
-  padding: 10px;
+  border: 0px solid rgba(0,0,0,0.85);
+  padding: 2px;
 }
 
 .search {
@@ -190,25 +199,25 @@ a:hover {
 .searchTerm {
   float: left;
   width: 100%;
-  border: 3px solid red;
+  border: 3px solid #18395C;
   padding: 5px;
   height: 50px;
   border-radius: 5px;
   outline: none;
-  color: red;
+  color: #18395C;
 }
 .searchTerm:focus{
-  color: red;
+  color: #18395C;
 }
 .searchButton {
   position: absolute;
   right: -95px;
   width: 80px;
   height: 50px;
-  border: 1px solid red;
-  background: red;
+  border: 1px solid #18395C;
+  background: white;
   text-align: center;
-  color: #fff;
+  color: ##18395C;
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
@@ -217,9 +226,53 @@ a:hover {
 }
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 50%;
+  width: 75%;
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.footer {
+   position: auto;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: transparent;
+   text-align: left;
+}
+
+.sidenav {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #18395C;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+}
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #FFFFFF;
+display: block;
+transition: 0.3s;
+}
+.sidenav a:hover {
+color: #f1f1f1;
+}
+.sidenav .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
 }

@@ -3,50 +3,72 @@ extends layoutBS
 block content
   body.bc
   br
-  h1.big.mono.red.leftBorder.underline All Available Books
-  h2.leftBorder All books Available in The Book Center at the moment
-  .table-responsive.leftBorder
-    table.table
-      thead
+  h1.big.mono.deisBlue.leftBorder.underline All Available Books
+  //h2 Here are the books currently on sale
+  table.table.table-bordered.table-striped
+    tbody
+      tr
+        td.underline
+          | Quantity
+        td.underline
+          | Book Name
+        td.underline
+          | Courses
+        td.underline
+          | Cover Type
+        td.underline
+          | Condition
+        td.underline
+          | Lowest Price
+        td.underline
+          | Seller
+      each item in addBooks
+        //- let url = item.url
         tr
-          th.underline # Quantity
-          th.underline Book Name
-          th.underline Courses
-          th.underline Cover Type
-          th.underline Condition
-          th.underline Lowest Price (USD)
-          th.underline Seller (Initials)
-      tbody
-        tr
-          td 10
-          td Single Variable Calculus: Concepts etc
-          td MATH 10A
-          td Hard Cover
-          td Like New
-          td $30
-          td M.L.
-        tr
-          td 2
-          td Principles of Microeconomics
-          td ECON 10A
-          td Paperback
-          td New
-          td $170
-          td J.D.
-        tr
-          td 6
-          td Genki 1
-          td JAPN 10A
-          td Paperback
-          td Fair
-          td $25
-          td J.W.
-        tr
-          td 5
-          td Genki 1 Workbook
-          td JAPN 10A
-          td Paperback
-          td New
-          td $20
-          td S.L.
+          td
+            |#{item.quantity}
+          td
+            |#{item.bookName}
+          td
+            |#{item.courses}
+          td
+            |#{item.coverType}
+          td
+            |#{item.condition}
+          td
+            |#{item.lowestPrice}
+          td
+            |#{item.seller}
   a.nav-link.active.leftBorder(href="/allBooks/addBooks") Add a book!
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br

@@ -109,7 +109,22 @@ let counter = 0
 //console.log("loading login router!!!")
 
 router.get('/', function(req, res, next) {
-  res.render('allBooks', { title: 'All Books' });
+  //res.render('index', { title: 'Express' });
+  counter++
+  //console.dir(database)
+  //console.dir(database.skills)
+  res.render('allBooks',
+      {info:'All Books',
+      quantity:database.quantity,
+      bookName:database.bookName,
+      courses:database.courses,
+      coverType:database.coverType,
+      condition:database.condition,
+      lowestPrice:database.lowestPrice,
+      seller:database.seller,
+      addBooks:database.addBooks,
+      counter:counter,
+    })
 });
 
 router.get('/addBooks', function(req, res, next) {
