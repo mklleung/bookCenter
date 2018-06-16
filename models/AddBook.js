@@ -1,4 +1,4 @@
-class AddBooks{
+/*class AddBooks{
   constructor(quantity,bookName,courses,coverType,condition,lowestPrice,seller){
     this.quantity = quantity
     this.bookName = bookName
@@ -14,4 +14,20 @@ class AddBooks{
   }
 }
 
-module.exports = AddBooks
+module.exports = AddBooks*/
+
+
+'use strict';
+const mongoose = require( 'mongoose' );
+
+var addBookSchema = mongoose.Schema( {
+  quantity: String,
+  bookName: String,
+  courses: String,
+  coverType: String,
+  condition: String,
+  lowestPrice: String,
+  seller: String
+} );
+
+module.exports = mongoose.model( 'addBook', addBookSchema );

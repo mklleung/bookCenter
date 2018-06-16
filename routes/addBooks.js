@@ -6,16 +6,16 @@ const Skill = require('../models/Skill')
 const Evidence = require('../models/Evidence')
 const SquareInfo = require('../models/SquareInfo')
 
-console.log("inside router ...")
+//console.log("inside router ...")
 // Here is where we read the data from a file
 let rawdata = fs.readFileSync('../database/data.json','utf8');
 let database = JSON.parse(rawdata);
-console.log("just read database!")
-console.log(`Here are the squares ${database.squares.map((x)=>(x.toString()))}`)
+//console.log("just read database!")
+//console.log(`Here are the squares ${database.squares.map((x)=>(x.toString()))}`)
 
 //This variable only lasts as long as the router is not restarted
 let counter = 0
-console.log("loading skills router!!!")
+//console.log("loading skills router!!!")
 
 //let squares = []
 

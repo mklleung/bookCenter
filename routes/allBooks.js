@@ -1,4 +1,4 @@
-/*var express = require('express');
+var express = require('express');
 var router = express.Router();
 
 //GET home page.
@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-var express = require('express');
+/*var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 const Quantity = require('../models/Quantity')
@@ -83,7 +83,7 @@ router.get('/', function(req, res, next) {
   res.render('allBooks', { title: 'All Books' });
 })
 
-module.exports = router;*/
+module.exports = router;
 
 var express = require('express');
 var router = express.Router();
@@ -95,7 +95,7 @@ const CoverType = require('../models/CoverType')
 const Condition = require('../models/Condition')
 const LowestPrice = require('../models/LowestPrice')
 const Seller = require('../models/Seller')
-const AddBooks = require('../models/AddBooks')
+//const AddBooks = require('../models/AddBooks')
 
 console.log("inside router ...")
 // Here is where we read the data from a file
@@ -122,7 +122,7 @@ router.get('/', function(req, res, next) {
       condition:database.condition,
       lowestPrice:database.lowestPrice,
       seller:database.seller,
-      addBooks:database.addBooks,
+      //addBooks:database.addBooks,
       counter:counter,
     })
 });
@@ -152,7 +152,7 @@ router.post('/addBooks', function(req, res, next){
   //console.log(req.body.student)
   //console.log(req.body.evidence)
   let e = new AddBooks(req.body.quantity, req.body.bookName, req.body.courses, req.body.coverType, req.body.condition, req.body.lowestPrice, req.body.seller)
-  console.log('Just loaded ',e)
+  //console.log('Just loaded ',e)
   database.addBooks.push(e)
   // here is where we write the modified data back to the disk
   fs.writeFileSync('../database/data.json',JSON.stringify(database,null,' '));
@@ -171,4 +171,4 @@ router.post('/addBooks', function(req, res, next){
     })
 })
 
-module.exports = router;
+module.exports = router;*/

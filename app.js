@@ -1,20 +1,30 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const
+  logInController = require('./controllers/logInController')
+  addBooksController = require('./controllers/addBooksController')
+  mongoose = require( 'mongoose' );
+  createError = require('http-errors');
+  express = require('express');
+  path = require('path');
+  cookieParser = require('cookie-parser');
+  logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var allBooksRouter = require('./routes/allBooks');
-var departmentsRouter = require('./routes/departments');
-var watchlistRouter = require('./routes/watchlist');
-var yourPageRouter = require('./routes/yourPage');
-var logInRouter = require('./routes/logIn');
-var addBooksRouter = require('./routes/addBooks');
-
+  indexRouter = require('./routes/index');
+  usersRouter = require('./routes/users');
+  allBooksRouter = require('./routes/allBooks');
+  departmentsRouter = require('./routes/departments');
+  watchlistRouter = require('./routes/watchlist');
+  yourPageRouter = require('./routes/yourPage');
+  //addBooksRouter = require('./routes/addBooks');
 
 var app = express();
+
+// here is where we connect to the database!
+mongoose.connect( 'mongodb://localhost/bookCenter' );
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we are connected!")
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +42,23 @@ app.use('/allBooks', allBooksRouter);
 app.use('/departments', departmentsRouter);
 app.use('/watchlist', watchlistRouter);
 app.use('/yourPage', yourPageRouter);
-app.use('/logIn', logInRouter);
-app.use('/addBooks', addBooksRouter);
+//app.use('/addBooks', addBooksRouter);
+
+app.get('/logins', logInController.getAllLogin );
+app.post('/saveLogin', logInController.saveLogin );
+app.post('/deleteLogin', logInController.deleteLogin );
+app.use('/logins', function(req, res, next) {
+  console.log("in / controller")
+  res.render('logins', { title: 'Book Center App' });
+});
+
+app.get('/addBooks', addBooksController.getAllBooks );
+app.post('/saveBook', addBooksController.saveBook );
+app.post('/deleteBook', addBooksController.deleteBook );
+app.use('/addBooks', function(req, res, next) {
+  console.log("in / controller")
+  res.render('addBooks', { title: 'Book Center App' });
+});
 
 
 // catch 404 and forward to error handler

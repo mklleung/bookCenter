@@ -1,34 +1,47 @@
 extends layoutBS
 
 block content
-  h1.underline Add a book to sell!
-  h2 There are currently #{addBooks.length} books on sale!
-  p This page has been visited #{counter} times since last reset
-  br
-  br
-  h2 Here are the books currently on sale
-  table.table.table-bordered.table-striped
+  body.bc
+  h1.leftBorder List of All Books
+  table.table.table-bordered.table-striped.leftBorder
     tbody
-      each item in addBooks
+      tr
+        td.underline
+          | Quantity
+        td.underline
+          | Book Name
+        td.underline
+          | Courses
+        td.underline
+          | Cover Type
+        td.underline
+          | Condition
+        td.underline
+          | Lowest Price
+        td.underline
+          | Seller
+      each addBook in addBooks
         //- let url = item.url
         tr
           td
-            |#{item.quantity}
+            |#{addBook.quantity}
           td
-            |#{item.bookName}
+            |#{addBook.bookName}
           td
-            |#{item.courses}
+            |#{addBook.courses}
           td
-            |#{item.coverType}
+            |#{addBook.coverType}
           td
-            |#{item.condition}
+            |#{addBook.condition}
           td
-            |#{item.lowestPrice}
+            |#{addBook.lowestPrice}
           td
-            |#{item.seller}
+            |#{addBook.seller}
   br
   br
-  form(method="post" action="/allBooks/addBooks")
+  br
+  h1.underline.leftBorder Add a book to sell!
+  form.leftBorder(method="post" action="saveBook")
     br
     input(type="text" name="quantity" placeholder="Quantity")
     br
@@ -36,18 +49,32 @@ block content
     br
     input(type="text" name="courses" placeholder="Courses")
     br
-    | Cover Type --
-    select(name="coverType")
-      each val in coverType
-        option #{val.type}
+    input(type="text" name="coverType" placeholder="Cover Type")
     br
-    | Condition --
-    select(name="condition")
-      each val in condition
-        option #{val.degree}
+    input(type="text" name="condition" placeholder="Condition")
     br
     input(type="text" name="lowestPrice" placeholder="Lowest Price")
     br
     input(type="text" name="seller" placeholder="Seller")
     br
     button(type='submit') Submit
+  br
+  br
+  br
+  br
+  br
+  br
+  h1.underline.leftBorder Remove a book!
+  form.leftBorder(method="post" action="deleteBook")
+    ol
+      each addBook in addBooks
+        li
+          input(name="deleteQuantity" value=addBook.quantity type="checkbox")
+          e   #{addBook.quantity}  |
+          i   #{addBook.bookName}  |
+          e   #{addBook.courses}  |
+          i   #{addBook.coverType}  |
+          e   #{addBook.condition}  |
+          i   #{addBook.lowestPrice}  |
+          e   #{addBook.seller}
+    input(type="submit" value="Delete checked items")
