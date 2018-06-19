@@ -2,9 +2,7 @@ extends layoutBS
 
 block content
   body.bc
-  br
-  h1.big.mono.deisBlue.leftBorder.underline All Available Books
-  //h2 Here are the books currently on sale
+  h1.leftBorder List of All Books
   table.table.table-bordered.table-striped.leftBorder
     tbody
       tr
@@ -22,53 +20,21 @@ block content
           | Lowest Price
         td.underline
           | Seller
-      each item in addBooks
+      each addBook in addBooks
         //- let url = item.url
         tr
           td
-            |#{item.quantity}
+            |#{addBook.quantity}
           td
-            |#{item.bookName}
+            |#{addBook.bookName}
           td
-            |#{item.courses}
+            |#{addBook.courses}
           td
-            |#{item.coverType}
+            |#{addBook.coverType}
           td
-            |#{item.condition}
+            |#{addBook.condition}
           td
-            |#{item.lowestPrice}
+            |#{addBook.lowestPrice}
           td
-            |#{item.seller}
-  a.nav-link.active.leftBorder(href="/allBooks/addBooks") Add a book!
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
+            |#{addBook.seller}
+  

@@ -3,11 +3,8 @@ extends layoutBS
 block content
   body.bc
   br
-  h1.big.mono.red.leftBorder.underline Your Page
-  br
-  img.leftBorder(src ='/images/michael.jpg')
-  p.leftBorder Your picture goes here
-  textarea.test1.leftBorder(rows="5" cols="25" placeholder="Your bio goes here!")
+  h1.big.mono.red.leftBorder.underline #{user.googlename}
+  p.leftBorder.mono #{user.googleemail}
   br
   h2.leftBorder Star Rating
   span.fa.fa-star.checked.leftBorder
@@ -21,3 +18,8 @@ block content
   button.btn-primary.btn-lg.first Reviews of You
   button.btn-primary.btn-lg.second Your Reviews
   button.btn-primary.btn-lg.third Your Items on Sale
+
+  p
+      | Welcome #{user.googlename}
+      | with email #{user.googleemail}
+      | You are logged in

@@ -3,29 +3,10 @@ extends layoutBS
 block content
   body.bc
   br
-  h1.big.mono.underline.center Log In
+  h1.big.mono.underline.center Log In with Google
   br
-
-  form.leftBorder(method="post" action="saveLogin")
-    .formGroup
-      label login name
-      input(type="text" name="username")
-    .formGroup
-      label password
-      input(type="text" name="password")
-    input(type="submit")
-  br
-  h1.leftBorder List of All LogIn
-  form.leftBorder(method="post" action="deleteLogin")
-    ol
-      each login in logins
-        li
-          input(name="deleteusername" value=login.username type="checkbox")
-          e #{login.username} --
-          i #{login.password}
-    input(type="submit" value="Delete checked items")
-  br
-  br
+  a.btn.btn-danger.leftBorder(href="/auth/google")
+        span.fa.fa-google-plus  Google
   br
   br
   br
