@@ -3,40 +3,6 @@ extends layoutBS
 block content
   body.bc
   h1.leftBorder List of All Books
-  table.table.table-bordered.table-striped.leftBorder
-    tbody
-      tr
-        td.underline
-          | Quantity
-        td.underline
-          | Book Name
-        td.underline
-          | Courses
-        td.underline
-          | Cover Type
-        td.underline
-          | Condition
-        td.underline
-          | Lowest Price
-        td.underline
-          | Seller
-      each addBook in addBooks
-        //- let url = item.url
-        tr
-          td
-            |#{addBook.quantity}
-          td
-            |#{addBook.bookName}
-          td
-            |#{addBook.courses}
-          td
-            |#{addBook.coverType}
-          td
-            |#{addBook.condition}
-          td
-            |#{addBook.lowestPrice}
-          td
-            |#{addBook.seller}
   br
   br
   br
@@ -55,7 +21,7 @@ block content
     br
     input(type="text" name="lowestPrice" placeholder="Lowest Price")
     br
-    input(type="text" name="seller" placeholder="Seller")
+    input(type="text" name="seller" value=user.googleemail)
     br
     button(type='submit') Submit
   br
@@ -64,17 +30,15 @@ block content
   br
   br
   br
-  h1.underline.leftBorder Remove a book!
-  form.leftBorder(method="post" action="deleteBook")
-    ol
-      each addBook in addBooks
-        li
-          input(name="deleteQuantity" value=addBook.quantity type="checkbox")
-          e   #{addBook.quantity}  |
-          i   #{addBook.bookName}  |
-          e   #{addBook.courses}  |
-          i   #{addBook.coverType}  |
-          e   #{addBook.condition}  |
-          i   #{addBook.lowestPrice}  |
-          e   #{addBook.seller}
-    input(type="submit" value="Delete checked items")
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br

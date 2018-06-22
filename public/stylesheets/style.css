@@ -15,6 +15,10 @@ a {
   border-color: blue;
 }
 
+.blueBC{
+  background-color: #18395C;
+}
+
 .test1{
   font-size: 120;
   overflow: auto;
@@ -121,6 +125,9 @@ a {
 .red{
   color:red;
 }
+.lightgrey{
+  color:lightgrey;
+}
 .white{
   color:white;
 }
@@ -153,13 +160,13 @@ a {
 }
 
 a:link {
-    color: black;
+    color: white;
     font-size: 20pt;
     background-color: transparent;
     text-decoration: none;
 }
 a:visited {
-    color: black;
+    color: white;
     background-color: transparent;
     text-decoration: none;
 }
@@ -289,7 +296,11 @@ margin-left: 50px;
 .sidenav a {font-size: 18px;}
 }
 
-
+.btn{
+  width: 4in;
+  height: 4in;
+  left: 4.75in;
+}
 
 
 
@@ -307,11 +318,11 @@ margin-left: 50px;
   text-align: center;
   padding: 16px;
   transition: all 0.3s ease;
-  color: white;
+  color: #18395C;
   font-size: 20px;
 }
 .icon-bar a:hover {
-    background-color: #000;
+    background-color: lightgrey;
 }
 .facebook {
   background: #3B5998;

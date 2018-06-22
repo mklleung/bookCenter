@@ -37,4 +37,41 @@ block content
             |#{addBook.lowestPrice}
           td
             |#{addBook.seller}
-  
+  br
+  br
+  br
+  br
+  br
+  br
+  h1.underline.leftBorder Remove a book!
+  form.leftBorder(method="post" action="deleteBook")
+    ol
+      each addBook in addBooks
+        li
+          input(name="deleteQuantity" value=addBook.quantity type="checkbox")
+          e   #{addBook.quantity}  |
+          i   #{addBook.bookName}  |
+          e   #{addBook.courses}  |
+          i   #{addBook.coverType}  |
+          e   #{addBook.condition}  |
+          i   #{addBook.lowestPrice}  |
+          e   #{addBook.seller}
+    input(type="submit" value="Delete checked items")
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br

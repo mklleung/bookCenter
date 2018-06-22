@@ -1,6 +1,8 @@
 const
   logInController = require('./controllers/logInController')
   addBooksController = require('./controllers/addBooksController')
+  allBooksController = require('./controllers/allBooksController')
+  //sellerBooksController = require('./controllers/sellerBooksController')
   mongoose = require( 'mongoose' );
   createError = require('http-errors');
   express = require('express');
@@ -14,9 +16,9 @@ const
 
   indexRouter = require('./routes/index');
   usersRouter = require('./routes/users');
-  allBooksRouter = require('./routes/allBooks');
+  //allBooksRouter = require('./routes/allBooks');
   departmentsRouter = require('./routes/departments');
-  watchlistRouter = require('./routes/watchlist');
+  //watchlistRouter = require('./routes/watchlist');
   profileRouter = require('./routes/profile');
   //addBooksRouter = require('./routes/addBooks');
 
@@ -56,9 +58,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/allBooks', allBooksRouter);
+//app.use('/allBooks', allBooksRouter);
 app.use('/departments', departmentsRouter);
-app.use('/watchlist', watchlistRouter);
+//app.use('/watchlist', watchlistRouter);
 app.use('/profile2',isLoggedIn, profileRouter);
 //app.use('/addBooks', addBooksRouter);
 
@@ -74,6 +76,20 @@ app.get('/logins', function(req,res){
 app.get('/profile', isLoggedIn, function(req, res) {
       console.log(`req.user = ${req.user}`)
         res.render('profile', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+
+app.get('/addBooks', isLoggedIn, function(req, res) {
+      console.log(`req.user = ${req.user}`)
+        res.render('addBooks', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+
+app.get('/watchlist', isLoggedIn, function(req, res) {
+      console.log(`req.user = ${req.user}`)
+        res.render('watchlist', {
             user : req.user // get the user out of session and pass to template
         });
     });
@@ -127,8 +143,9 @@ app.use('/logins', function(req, res, next) {
   console.log("in / controller")
   res.render('logins', { title: 'Book Center App' });
 });*/
-app.get('/allBooks',addBooksController.getAllBooks );
-app.get('/addBooks',addBooksController.getAllBooks );
+app.get('/allBooks',allBooksController.getAllBooks );
+app.get('/addBooks',isLoggedIn,addBooksController.getAllBooks );
+//app.get('/profile',isLoggedIn,sellerBooksController.getAllBooks );
 app.post('/saveBook',addBooksController.saveBook );
 app.post('/deleteBook',addBooksController.deleteBook );
 app.use('/addBooks', function(req, res, next) {
