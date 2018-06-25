@@ -22,7 +22,24 @@ exports.getAllBooks = ( req, res ) => {
     } );
 };
 
-
+exports.attachAddBooks = ( req, res, next ) => {
+  console.log('in attachAddBooks')
+  AddBook.find( {seller:res.locals.user.googleemail} )
+    .exec()
+    .then( ( addBooks ) => {
+      console.log('gmail='+res.locals.user.googleemail)
+      console.log(addBooks)
+      res.locals.addBooks = addBooks
+      next()
+    } )
+    .catch( ( error ) => {
+      console.log( error.message );
+      return [];
+    } )
+    .then( () => {
+      console.log( 'attachAddBooks promise complete' );
+    } );
+};
 
 
 exports.saveBook = ( req, res ) => {

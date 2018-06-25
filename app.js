@@ -3,7 +3,9 @@ const
   addBooksController = require('./controllers/addBooksController')
   allBooksController = require('./controllers/allBooksController')
   //sellerBooksController = require('./controllers/sellerBooksController')
-  mongoose = require( 'mongoose' );
+  //skillsController = require('./controllers/skillsController'),
+  usersController = require('./controllers/usersController'),
+  //mongoose = require( 'mongoose' );
   createError = require('http-errors');
   express = require('express');
   path = require('path');
@@ -15,7 +17,7 @@ const
   flash = require('connect-flash')
 
   indexRouter = require('./routes/index');
-  usersRouter = require('./routes/users');
+  //usersRouter = require('./routes/users');
   //allBooksRouter = require('./routes/allBooks');
   departmentsRouter = require('./routes/departments');
   //watchlistRouter = require('./routes/watchlist');
@@ -33,6 +35,7 @@ const
 var app = express();
 
 // here is where we connect to the database!
+const mongoose = require( 'mongoose' );
 mongoose.connect( 'mongodb://localhost/bookCenter' );
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -56,13 +59,29 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req,res,next) => {
+  res.locals.loggedIn = false
+  if (req.isAuthenticated()){
+    console.log("user has been Authenticated")
+    res.locals.user = req.user
+    res.locals.loggedIn = true
+  }
+  next()
+})
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 //app.use('/allBooks', allBooksRouter);
 app.use('/departments', departmentsRouter);
 //app.use('/watchlist', watchlistRouter);
-app.use('/profile2',isLoggedIn, profileRouter);
+//app.use('/profile2',isLoggedIn, profileRouter);
 //app.use('/addBooks', addBooksRouter);
+
+app.get('/users',usersController.getAllUsers)
+app.get('/users/:id',
+        usersController.attachUser,
+        addBooksController.attachAddBooks,
+        usersController.getUser)
 
 app.get('/loginerror', function(req,res){
   res.render('loginerror',{})
@@ -73,14 +92,20 @@ app.get('/logins', function(req,res){
 })
 
 // we require them to be logged in to see their profile
-app.get('/profile', isLoggedIn, function(req, res) {
+/*app.get('/profile', isLoggedIn, function(req, res) {
       console.log(`req.user = ${req.user}`)
+        res.render('profile', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });*/
+
+app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile', {
             user : req.user // get the user out of session and pass to template
         });
     });
 
-app.get('/addBooks', isLoggedIn, function(req, res) {
+app.get('/addBooks', function(req, res) {
       console.log(`req.user = ${req.user}`)
         res.render('addBooks', {
             user : req.user // get the user out of session and pass to template
@@ -112,38 +137,48 @@ app.get('/logout', function(req, res) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
             passport.authenticate('google', {
-                    successRedirect : '/profile',
+                    successRedirect : '/',
                     failureRedirect : '/loginerror'
             }));
 
     app.get('/login/authorized',
             passport.authenticate('google', {
-                    successRedirect : '/profile',
+                    successRedirect : '/',
                     failureRedirect : '/loginerror'
             }));
 
 // route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
+/*function isLoggedIn(req, res, next) {
     console.log("checking to see if they are authenticated!")
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated()){
       console.log("user has been Authenticated")
       return next();
     }
-
     console.log("user has not been authenticated...")
     // if they aren't redirect them to the home page
     res.redirect('/logins');
+}*/
+
+function isLoggedIn(req, res, next) {
+    console.log("checking to see if they are authenticated!")
+    // if user is authenticated in the session, carry on
+    res.locals.loggedIn = false
+    if (req.isAuthenticated()){
+      console.log("user has been Authenticated")
+      return next();
+    } else {
+      console.log("user has not been authenticated...")
+      res.redirect('/login');
+    }
 }
 
-/*app.get('/logins', isLoggedIn,logInController.getAllLogin );
-app.post('/saveLogin', isLoggedIn,logInController.saveLogin );
-app.post('/deleteLogin', isLoggedIn,logInController.deleteLogin );
-app.use('/logins', function(req, res, next) {
-  console.log("in / controller")
-  res.render('logins', { title: 'Book Center App' });
-});*/
-app.get('/allBooks',allBooksController.getAllBooks );
+
+/*app.get('/skills', skillsController.getAllSkills );
+app.post('/saveSkill', isLoggedIn, skillsController.saveSkill );
+app.post('/deleteSkill', isLoggedIn, skillsController.deleteSkill );*/
+
+app.get('/allBooks', allBooksController.getAllBooks );
 app.get('/addBooks',isLoggedIn,addBooksController.getAllBooks );
 //app.get('/profile',isLoggedIn,sellerBooksController.getAllBooks );
 app.post('/saveBook',addBooksController.saveBook );

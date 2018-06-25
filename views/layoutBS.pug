@@ -10,30 +10,20 @@ html(lang="en")
     meta(name='viewport' content='width=device-width, initial-scale=1')
     block head
   body
-    //ul.nav.nav-pills.nav-fill
-        //li.nav-item
-          //a.nav-link.active(href="/") Home
-        //li.nav-item
-        //  a.nav-link.active(href="/allBooks") All Books
-      //  li.nav-item
-      //    a.nav-link.active(href="/departments") Departments
-      //  li.nav-item
-      //    a.nav-link.active(href="/watchlist") Watch List
-      //  li.nav-item
-      //    a.nav-link.active(href="/profile") Profile
-      //  a.nav-link.active.btn-danger(class='button' href='/logIn') Log In
     ul.nav.navbar-nav.navbar-right
     #mySidenav.sidenav
       a.closebtn(href='javascript:void(0)' onclick='closeNav()') &times;
       h1.underline.white.mono The Book Center
       a.mono(href="/") Home
-      a.mono(href="/addBooks") Add Books
       a.mono(href="/allBooks") All Books
       a.mono(href='/departments') Departments
       //a.mono(href='/watchlist') Watch List
-      a.mono(href='/profile') Profile
-      a.mono(href='/logins') Log In
-      a.mono(href='/logout') log Out
+      if loggedIn
+        a.mono(href='/users') Users
+        a.mono(href="/addBooks") Add Books
+        a.mono(href='/logout') log Out
+      else
+        a.mono(href='/logins') Log In
       br
       br
       br

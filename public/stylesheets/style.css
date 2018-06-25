@@ -14,7 +14,9 @@ a {
   border-left: 30px solid rgba(0,0,0,0.25);
   border-color: blue;
 }
-
+.whiteBC{
+  background-color: white;
+}
 .blueBC{
   background-color: #18395C;
 }
@@ -261,6 +263,9 @@ a:hover {
   color: orange;
 }
 
+
+/*this is the beginning of the side bar CSS */
+
 .sidenav {
 height: 100%;
 width: 0;
@@ -302,9 +307,10 @@ margin-left: 50px;
   left: 4.75in;
 }
 
+/*this is the end of the side bar CSS */
 
 
-
+/*this is the beginning of the side bar buttons CSS */
 
 .icon-bar {
   position: fixed;
@@ -348,6 +354,11 @@ margin-left: 50px;
   margin-left: 75px;
   font-size: 30px;
 }
+
+/*this is the end of the side bar buttons CSS */
+
+
+
 
 table {
   border-collapse: collapse;

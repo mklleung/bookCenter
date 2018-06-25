@@ -1,0 +1,39 @@
+extends layoutBS
+
+block content
+  .container.blueBC
+    br
+    h1.white #{user.googlename}
+    ul.white
+      li
+        | email: #{user.googleemail}
+    hr
+    h2.white Delete Evidence
+    //h1 addbooks = #{addBooks}
+    table.table.table-bordered
+      thead
+        tr.white.blueBC
+          th delete?
+          th quantity
+          th Book Name
+          th Courses
+          th Cover type
+          th condition
+          th Lowest Price
+          th Seller
+      tbody.whiteBC
+        each addBook in addBooks
+          tr
+            td
+              input(name="addBookID" value=u_id type="checkbox")
+            td #{addBook.quantity}
+            td #{addBook.bookName}
+            td #{addBook.courses}
+            td #{addBook.coverType}
+            td #{addBook.condition}
+            td #{addBook.lowestPrice}
+            td #{addBook.seller}
+    br
+    input(type="submit" value="Delete checked items")
+    hr
+    br
