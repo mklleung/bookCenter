@@ -1,5 +1,5 @@
 'use strict';
-const AddBook = require( '../models/addbook' );
+const AddBook = require( '../models/AddBook' );
 console.log("loading the addBook Controller")
 
 
