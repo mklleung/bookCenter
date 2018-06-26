@@ -17,6 +17,7 @@ const
   flash = require('connect-flash')
 
   indexRouter = require('./routes/index');
+  aboutRouter = require('./routes/about');
   //usersRouter = require('./routes/users');
   //allBooksRouter = require('./routes/allBooks');
   departmentsRouter = require('./routes/departments');
@@ -70,6 +71,8 @@ app.use((req,res,next) => {
 })
 
 app.use('/', indexRouter);
+app.use('/about', aboutRouter);
+
 //app.use('/users', usersRouter);
 //app.use('/allBooks', allBooksRouter);
 app.use('/departments', departmentsRouter);

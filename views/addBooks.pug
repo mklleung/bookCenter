@@ -1,44 +1,39 @@
 extends layoutBS
 
 block content
-  body.bc
-  h1.leftBorder List of All Books
-  br
-  br
-  br
-  h1.underline.leftBorder Add a book to sell!
-  form.leftBorder(method="post" action="saveBook")
+  body
+  .container.blueBC
     br
-    input(type="text" name="quantity" placeholder="Quantity")
     br
-    input(type="text" name="bookName" placeholder="Book Name")
+    h1.underline.leftBorder.white Add a book to sell!
+    form.leftBorder(method="post" action="saveBook")
+      br
+      br
+      input(type="text" name="quantity" placeholder="Quantity")
+      br
+      br
+      input(type="text" name="bookName" placeholder="Book Name")
+      br
+      br
+      input(type="text" name="courses" placeholder="Courses")
+      br
+      br
+      input(type="text" name="coverType" placeholder="Cover Type")
+      br
+      br
+      input(type="text" name="condition" placeholder="Condition")
+      br
+      br
+      input(type="text" name="lowestPrice" placeholder="Lowest Price")
+      br
+      br
+      input(type="text" name="seller" value=user.googleemail)
+      br
+      br
+      button(type='submit') Submit
     br
-    input(type="text" name="courses" placeholder="Courses")
     br
-    input(type="text" name="coverType" placeholder="Cover Type")
     br
-    input(type="text" name="condition" placeholder="Condition")
     br
-    input(type="text" name="lowestPrice" placeholder="Lowest Price")
     br
-    input(type="text" name="seller" value=user.googleemail)
     br
-    button(type='submit') Submit
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br

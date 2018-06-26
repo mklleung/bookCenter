@@ -1,77 +1,63 @@
 extends layoutBS
 
 block content
-  body.bc
-  h1.leftBorder List of All Books
-  table.table.table-bordered.table-striped.leftBorder
-    tbody
-      tr
-        td.underline
-          | Quantity
-        td.underline
-          | Book Name
-        td.underline
-          | Courses
-        td.underline
-          | Cover Type
-        td.underline
-          | Condition
-        td.underline
-          | Lowest Price
-        td.underline
-          | Seller
-      each addBook in addBooks
-        //- let url = item.url
+  body
+  .container.blueBC
+    br
+    br
+    h1.leftBorder.white List of All Books
+    table.table.table-bordered.whiteBC
+      tbody
         tr
-          td
-            |#{addBook.quantity}
-          td
-            |#{addBook.bookName}
-          td
-            |#{addBook.courses}
-          td
-            |#{addBook.coverType}
-          td
-            |#{addBook.condition}
-          td
-            |#{addBook.lowestPrice}
-          td
-            |#{addBook.seller}
-  br
-  br
-  br
-  br
-  br
-  br
-  h1.underline.leftBorder Remove a book!
-  form.leftBorder(method="post" action="deleteBook")
-    ol
-      each addBook in addBooks
-        li
-          input(name="deleteQuantity" value=addBook.quantity type="checkbox")
-          e   #{addBook.quantity}  |
-          i   #{addBook.bookName}  |
-          e   #{addBook.courses}  |
-          i   #{addBook.coverType}  |
-          e   #{addBook.condition}  |
-          i   #{addBook.lowestPrice}  |
-          e   #{addBook.seller}
-    input(type="submit" value="Delete checked items")
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  br
+          td.underline
+            | Quantity
+          td.underline
+            | Book Name
+          td.underline
+            | Courses
+          td.underline
+            | Cover Type
+          td.underline
+            | Condition
+          td.underline
+            | Lowest Price
+          td.underline
+            | Seller
+        each addBook in addBooks
+          //- let url = item.url
+          tr
+            td
+              |#{addBook.quantity}
+            td
+              |#{addBook.bookName}
+            td
+              |#{addBook.courses}
+            td
+              |#{addBook.coverType}
+            td
+              |#{addBook.condition}
+            td
+              |#{addBook.lowestPrice}
+            td
+              |#{addBook.seller}
+    br
+    br
+    hr
+    br
+    h1.underline.leftBorder.white Remove a book!
+    form.leftBorder.white(method="post" action="deleteBook")
+      ol
+        each addBook in addBooks
+          li
+            input(name="deleteQuantity" value=addBook.quantity type="checkbox")
+            e   #{addBook.quantity}  |
+            i   #{addBook.bookName}  |
+            e   #{addBook.courses}  |
+            i   #{addBook.coverType}  |
+            e   #{addBook.condition}  |
+            i   #{addBook.lowestPrice}  |
+            e   #{addBook.seller}
+      input(type="submit" value="Delete checked items")
+    br
+    br
+    br
