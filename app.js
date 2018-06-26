@@ -13,7 +13,7 @@ const
   logger = require('morgan');
   session = require("express-session"),
   bodyParser = require("body-parser"),
-  User = require( './models/user' ),
+  User = require( './models/User' ),
   flash = require('connect-flash')
 
   indexRouter = require('./routes/index');
