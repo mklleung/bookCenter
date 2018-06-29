@@ -90,3 +90,29 @@ exports.deleteBook = (req, res) => {
   }
 
 };
+
+
+exports.deleteBook2 = (req, res) => {
+  console.log("in deleteBook2")
+  let addBookName = req.body.deleteQuantity
+  if (typeof(addBookName)=='string') {
+      console.log("in first if statement")
+      AddBook.deleteOne({quantity:addBookName})
+           .exec()
+           .then(()=>{res.redirect('/users/:id')})
+           .catch((error)=>{res.send(error)})
+  } else if (typeof(addBookName)=='object'){
+      console.log("in second if statement")
+      AddBook.deleteMany({quantity:{$in:addBookName}})
+           .exec()
+           .then(()=>{res.redirect('/users/:id')})
+           .catch((error)=>{res.send(error)})
+  } else if (typeof(addBookName)=='undefined'){
+      console.log("This is if they didn't select a book")
+      res.redirect('/users/:id')
+  } else {
+    console.log("This shouldn't happen!")
+    res.send(`unknown addBookName: ${addBookName}`)
+  }
+
+};

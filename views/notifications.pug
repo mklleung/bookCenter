@@ -1,0 +1,60 @@
+extends layoutBS
+
+block content
+  body
+  .container.blueBC
+    br
+    br
+    h1.white.underline Notifications
+    hr
+    p.white On this page it will have two tables
+    br
+    p.white One table will display all the books that the user has on sale and people want to connect with them about buying from them
+    br
+    h1.white.underline Active Selling!
+    table.table.table-bordered.whiteBC
+      tbody
+        tr.whiteBC.deisBlue
+          td.underline
+            | Delete?
+          td.underline
+            | Quantity
+          td.underline
+            | Book Name
+          td.underline
+            | Courses
+          td.underline
+            | Cover Type
+          td.underline
+            | Condition
+          td.underline
+            | Lowest Price
+          td.underline
+            | Buyer
+    br
+    p.white The other table will display all the books/sellers that the buyer is trying to connect with to purchase from
+    br
+    h1.white.underline Active Buying!
+    table.table.table-bordered.whiteBC
+      tbody
+        tr.whiteBC.deisBlue
+          td.underline
+            | Delete?
+          td.underline
+            | Quantity
+          td.underline
+            | Book Name
+          td.underline
+            | Courses
+          td.underline
+            | Cover Type
+          td.underline
+            | Condition
+          td.underline
+            | Lowest Price
+          td.underline
+            | Seller
+    br
+    p.white Both tables will have a delete button so that the user can either deny people's requests or delete books they no longer want
+    br
+    br

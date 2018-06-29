@@ -6,40 +6,41 @@ block content
     br
     br
     h1.leftBorder.white List of All Books
-    table.table.table-bordered.whiteBC
-      tbody
-        tr.blueBC.white
-          td.underline
-            | Quantity
-          td.underline
-            | Book Name
-          td.underline
-            | Courses
-          td.underline
-            | Cover Type
-          td.underline
-            | Condition
-          td.underline
-            | Lowest Price
-          td.underline
-            | Seller
-        each addBook in addBooks
-          //- let url = item.url
-          tr
-            td
-              |#{addBook.quantity}
-            td
-              |#{addBook.bookName}
-            td
-              |#{addBook.courses}
-            td
-              |#{addBook.coverType}
-            td
-              |#{addBook.condition}
-            td
-              |#{addBook.lowestPrice}
-            td
-              |#{addBook.seller}
+    //table.table.table-bordered.whiteBC
+      //tbody
+    form(method="post" action="addCart")
+      table.table.table-bordered
+        thead
+          tr.blueBC.white
+            if loggedIn
+              th Add?
+            th quantity
+            th Book Name
+            th Courses
+            th Cover type
+            th condition
+            th Lowest Price
+            if loggedIn
+              td.underline
+                | Seller
+          each addBook in addBooks
+            //- let url = item.url
+            tr.whiteBC.deisBlue
+              if loggedIn
+                td
+                  input(name="addBookID" value=u_id type="checkbox")
+              td #{addBook.quantity}
+              td #{addBook.bookName}
+              td #{addBook.courses}
+              td #{addBook.coverType}
+              td #{addBook.condition}
+              td #{addBook.lowestPrice}
+              if loggedIn
+                td
+                  |#{addBook.seller}
+    //p #{user.googleemail}
+    br
+    input(type="submit" value="Add to Cart")
     br
     br
     hr

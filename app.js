@@ -5,6 +5,7 @@ const
   //sellerBooksController = require('./controllers/sellerBooksController')
   //skillsController = require('./controllers/skillsController'),
   usersController = require('./controllers/usersController'),
+  notificationsController = require('./controllers/notificationsController'),
   //mongoose = require( 'mongoose' );
   createError = require('http-errors');
   express = require('express');
@@ -18,12 +19,8 @@ const
 
   indexRouter = require('./routes/index');
   aboutRouter = require('./routes/about');
-  //usersRouter = require('./routes/users');
-  //allBooksRouter = require('./routes/allBooks');
   departmentsRouter = require('./routes/departments');
-  //watchlistRouter = require('./routes/watchlist');
   profileRouter = require('./routes/profile');
-  //addBooksRouter = require('./routes/addBooks');
 
   var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
@@ -76,7 +73,6 @@ app.use('/about', aboutRouter);
 //app.use('/users', usersRouter);
 //app.use('/allBooks', allBooksRouter);
 app.use('/departments', departmentsRouter);
-//app.use('/watchlist', watchlistRouter);
 //app.use('/profile2',isLoggedIn, profileRouter);
 //app.use('/addBooks', addBooksRouter);
 
@@ -84,6 +80,15 @@ app.get('/users',usersController.getAllUsers)
 app.get('/users/:id',
         usersController.attachUser,
         addBooksController.attachAddBooks,
+        usersController.getUser)
+//need to find a way so that deleteBook2 doesnt replace the user's id
+app.post('/users/:id',
+        usersController.attachUser,
+        usersController.getUser,
+        addBooksController.deleteBook2);
+
+app.get('/layoutBS',
+        usersController.attachUser,
         usersController.getUser)
 
 app.get('/loginerror', function(req,res){
@@ -93,6 +98,8 @@ app.get('/loginerror', function(req,res){
 app.get('/logins', function(req,res){
   res.render('logins',{})
 })
+
+app.get('/notifications', notificationsController.renderNotifications)
 
 // we require them to be logged in to see their profile
 /*app.get('/profile', isLoggedIn, function(req, res) {
@@ -111,13 +118,6 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/addBooks', function(req, res) {
       console.log(`req.user = ${req.user}`)
         res.render('addBooks', {
-            user : req.user // get the user out of session and pass to template
-        });
-    });
-
-app.get('/watchlist', isLoggedIn, function(req, res) {
-      console.log(`req.user = ${req.user}`)
-        res.render('watchlist', {
             user : req.user // get the user out of session and pass to template
         });
     });
@@ -149,19 +149,6 @@ app.get('/logout', function(req, res) {
                     successRedirect : '/',
                     failureRedirect : '/loginerror'
             }));
-
-// route middleware to make sure a user is logged in
-/*function isLoggedIn(req, res, next) {
-    console.log("checking to see if they are authenticated!")
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated()){
-      console.log("user has been Authenticated")
-      return next();
-    }
-    console.log("user has not been authenticated...")
-    // if they aren't redirect them to the home page
-    res.redirect('/logins');
-}*/
 
 function isLoggedIn(req, res, next) {
     console.log("checking to see if they are authenticated!")

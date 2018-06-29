@@ -58,3 +58,10 @@ exports.attachUser = ( req, res, next ) => {
       console.log( 'attachUser promise complete' );
     } );
 };
+
+exports.getUserEmail = (req, res)=> {
+    console.log(`req.user = ${req.user}`)
+      //res.render('allBooks', {
+          user : req.user // get the user out of session and pass to template
+      //}
+    }
